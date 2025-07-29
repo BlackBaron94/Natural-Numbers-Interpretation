@@ -144,6 +144,17 @@ public class NaturalNumbersInterpretationTest {
     }
 
     @Test
+    public void tenOneNoInterpretation() {
+        String input = "6 9 7 6 7 8 9 10 1";
+        ArrayList<String> output = NaturalNumbersInterpretation.prepareOutput(input);
+        assertEquals(1, output.size());
+
+        assertTrue(output.stream().anyMatch(s -> s.contains("6976789101 [phone number: VALID]")));
+
+        assertFalse(output.stream().anyMatch(s -> s.contains("697678911 [phone number: INVALID]")));
+    }
+
+    @Test
     public void twelveNoInterpretation() {
         String input = "6 9 7 6 7 8 9 8 12";
         ArrayList<String> output = NaturalNumbersInterpretation.prepareOutput(input);
@@ -155,12 +166,33 @@ public class NaturalNumbersInterpretationTest {
     }
 
     @Test
+    public void tenTwoNoInterpretation() {
+        String input = "6 9 7 6 7 8 9 10 2";
+        ArrayList<String> output = NaturalNumbersInterpretation.prepareOutput(input);
+        assertEquals(1, output.size());
+
+        assertTrue(output.stream().anyMatch(s -> s.contains("6976789102 [phone number: VALID]")));
+
+        assertFalse(output.stream().anyMatch(s -> s.contains("697678912 [phone number: INVALID]")));
+    }
+
+    @Test
     public void greekOneHundredNoInterpretation() {
         String input = "6 9 7 6 7 8 9 110";
         ArrayList<String> output = NaturalNumbersInterpretation.prepareOutput(input);
         assertEquals(1, output.size());
 
         assertTrue(output.contains("Interpretation #1: 6976789110 [phone number: VALID]"));
+
+        assertFalse(output.stream().anyMatch(s -> s.contains("6976789810010 [phone number: INVALID]")));
+    }
+
+    @Test
+    public void greek115MinimizedInterpretations() {
+        String input = "6 9 7 6 7 8 9 115";
+        ArrayList<String> output = NaturalNumbersInterpretation.prepareOutput(input);
+        assertTrue(output.contains("Interpretation #1: 6976789115 [phone number: VALID]"));
+        assertTrue(output.stream().anyMatch(s -> s.contains("69767891105 [phone number: INVALID]")));
 
         assertFalse(output.stream().anyMatch(s -> s.contains("6976789810010 [phone number: INVALID]")));
     }

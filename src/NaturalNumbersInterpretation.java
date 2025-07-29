@@ -99,8 +99,16 @@ public class NaturalNumbersInterpretation {
                     returnList.add(tempList);
                     return returnList;
                  }*/
-                    // Case of 60 0 where 0 should not be absorbed
-                    if (!(tempList.get(twoDigitsIndex.get(1) + 2).equals('0'))){
+                    // Checks that next solo digit is not 0, and makes sure combo is no 10 1 or 10 2
+                    if (
+                        (!(tempList.get(twoDigitsIndex.get(1) + 2).equals('0'))) &&
+                                (!
+                                    (tempList.get(twoDigitsIndex.get(0)).equals('1') &&
+                                            (tempList.get(twoDigitsIndex.get(1) + 2).equals('1') ||
+                                            tempList.get(twoDigitsIndex.get(1) + 2).equals('2'))
+                                    )
+                                )
+                    ){
                         Character mergedCharacter = branching.get(twoDigitsIndex.get(1) + 2);
                         // Merges next single digit, "20 3" becomes "23 3"
                         branching.set(twoDigitsIndex.get(1), mergedCharacter);
