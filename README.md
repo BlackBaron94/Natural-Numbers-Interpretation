@@ -94,7 +94,7 @@ As you can see below, "0 0 30 69 700 24 1 3 50 2" taken as is, results in an Inv
 Ambiguity of 3 cases with 2 interpretations each, result in 2^3 = 8 different possibilities, as displayed below.
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/BlackBaron94/images/main/Natural-Number-Interpretation/Use_Case.jpg" alt="Use_Case" width="750"/>
+    <img src="https://raw.githubusercontent.com/BlackBaron94/images/main/Natural-Numbers-Interpretation/Use_Case.jpg" alt="Use_Case" width="750"/>
 </div>
 
 
